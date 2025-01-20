@@ -15,7 +15,7 @@
   <!--Listado de productos-->
   <ul>
     <li *ngFor = "let producto of productos">
-      <span [class.stock]="producto.stock">{{producto.nombre}}</span>
+      <span [class.completada]="producto.stock">{{producto.nombre}}</span>
       <button (click)="actualizarProducto(producto.id)" [disabled]="producto.stock">Producto disponible</button>
       <button (click)="eliminarProducto(producto.id)">Baja producto</button>
     </li>

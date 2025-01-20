@@ -20,7 +20,7 @@ export class EcommerceComponent implements OnInit {
     const nuevo = {
       id: Date.now(),
       nombre: this.nuevoProducto,
-      stock: true
+      stock: false
     };
     this.ecommerceService.productos.push(nuevo);
     this.productos = this.ecommerceService.getProductos();
@@ -39,7 +39,7 @@ eliminarProducto(id: number){
 }
 
 actualizarProducto(id: number){
-  const nuevaInfo = {stock: false};
+  const nuevaInfo = {stock: true};
   this.ecommerceService.updateProducto(id, nuevaInfo);
   this.productos = this.ecommerceService.getProductos();
 }
