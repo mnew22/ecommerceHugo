@@ -1,0 +1,25 @@
+<div class="gestor-tareas">
+  <h1>MI TIENDA ECOMMERCE</h1>
+  <!--Formulario para agregar productos-->
+  <div class="formulario-agregar">
+      <input
+        type="text"
+        [(ngModel)]="nuevoProducto"
+        placeholder="Escribe una nueva tarea"
+      />
+      <button (click)="agregarProducto()">Agregar</button>
+  </div>
+  <p *ngIf="errorMensaje"> {{errorMensaje}}</p>
+
+  <!--Catálogo de productos-->
+  <ul>
+    <li *ngFor="let producto of productos">
+      <span> {{producto.nombre}} - {{producto.descripcion}}  - {{producto.color}} - {{producto.stock}}</span>
+    </li>
+
+    <button (click)="updateProducto()"></button>
+
+
+  </ul>
+
+</div>
