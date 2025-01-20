@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EcommerceComponent } from './compenents/ecommerce/ecommerce.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './compenents/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EcommerceComponent
+    EcommerceComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

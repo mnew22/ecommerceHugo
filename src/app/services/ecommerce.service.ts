@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class EcommerceService {
   productos = [
-    { id: 1, nombre: 'Imac 2024 32 GB', stock: true },
-    { id: 2, nombre: 'Ipad Pro Silver', stock: true },
-    { id: 3, nombre: 'Iphe 16 128 GB', stock: true },
+    { id: 1, nombre: 'Imac 2024 32 GB', stock: false },
+    { id: 2, nombre: 'Ipad 128 GB Pro', stock: false },
+    { id: 3, nombre: 'Iphone 16 128 GB', stock: false },
   ];
 
   constructor() {}

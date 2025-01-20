@@ -6,7 +6,7 @@ import { EcommerceService } from 'src/app/services/ecommerce.service';
   styleUrls: ['./ecommerce.component.css']
 })
 export class EcommerceComponent implements OnInit {
-  productos: {id: number, nombre: string, descripcion: string, color: string, stock: boolean}[] = [];
+  productos: {id: number, nombre: string, stock: boolean}[] = [];
   nuevoProducto: string = '';
   errorMensaje: string = '';
   constructor(private ecommerceService: EcommerceService) { }
@@ -15,31 +15,32 @@ export class EcommerceComponent implements OnInit {
     this.productos = this.ecommerceService.getProductos();
   }
 
-  agregarProducto(){
-    if (this.nuevoProducto.trim().length === 0){
-      this.errorMensaje = 'El nombre del producto no puede estar vacio';
-      return;
-    }
-    const id = this.productos.length + 1;
-    this.productos.push({
-      id: id,
+ agregarProducto(){
+  if(this.nuevoProducto.trim()){
+    const nuevo = {
+      id: Date.now(),
       nombre: this.nuevoProducto,
-      descripcion: 'Producto de prueba',
-      color: 'Black',
-      stock: true,
-    });
+      stock: true
+    };
+    this.ecommerceService.productos.push(nuevo);
+    this.productos = this.ecommerceService.getProductos();
     this.nuevoProducto = '';
-    this.errorMensaje = '';
-  }
 
-  eliminarProducto(id: number){
-    this.ecommerceService.deleteProducto(id);
-    this.productos = this.ecommerceService.getProductos();
-  }
+ }
+ else{
+  this.errorMensaje = 'El campo no puede estar vacio';
+ }
+}
 
-  updateProducto(id: number){
-    this.ecommerceService.updateProducto(id, {stock: false});
-    this.productos = this.ecommerceService.getProductos();
-  }
+eliminarProducto(id: number){
+  this.ecommerceService.deleteProducto(id);
+  this.productos = this.ecommerceService.getProductos();
 
+}
+
+actualizarProducto(id: number){
+  const nuevaInfo = {stock: false};
+  this.ecommerceService.updateProducto(id, nuevaInfo);
+  this.productos = this.ecommerceService.getProductos();
+}
 }
